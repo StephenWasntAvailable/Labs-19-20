@@ -34,6 +34,7 @@ plt.xlabel("Voltage (V)")
 plt.ylabel("Current (A)")
 plt.title("Probe Current vs. Probe Voltage")
 plt.legend(loc = 'upper left')
+plt.grid()
 #plt.xlim(0.5, 1.5)
 #7plt.ylim(0, 0.003)
 

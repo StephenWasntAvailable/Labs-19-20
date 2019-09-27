@@ -19,11 +19,15 @@ for i in range(0, len(x1)):
 
 y = np.array([0.033,0.490,1.000,1.490,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00,6.50,7.00,7.50,8.00,8.50,8.97,9.50,10.0,10.50,11.00,11.50,12.00,12.50,13.00,13.50,14.00,14.50,15.00,15.49,16.00])
 
-plt.plot(x, y, 'bx')
+plt.plot(x, y, 'bx', label = 'Data')
 
-y_err = np.array([])
-x_err = np.array([])
-#plt.errorbar( x, y, xerr =  x_err, yerr = y_err, fmt = 'o')
+y_err = np.array([0.001,0.005,0.005,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01])
+x1_err = np.array([0.001e-3,0.001e-3,4e-5,3e-5,2e-5,2e-5,0.01e-3,0.01e-3,0.01e-3,2e-5,2e-5,2e-5,2e-5,4e-5,3e-5,5e-5,2e-5,4e-5,2e-5,2e-5,3e-5,4e-5,5e-5,4e-5,0.01e-3,0.01e-3,0.01e-3,0.01e-3,4e-5,0.1e-3,0.1e-3,0.1e-3,0.1e-3])
+
+x_err = np.zeros(len(x1_err))
+for i in range(0, len(x1_err)):
+    x_err[i] = (2.0/3.0) * (x1_err[i] / x1[i]) * x[i]
+plt.errorbar( x, y, xerr =  x_err, yerr = y_err, fmt = 'g.', label = 'Error')
 #plt.errorbar( x, y, fmt = 'bo', label ='Data')
 
 p = np.polyfit( x, y, 1)
@@ -34,10 +38,11 @@ y_model = slope * x + intercept
 plt.plot(x, y_model, 'r', label = 'Fit')
 
 
-plt.xlabel("")
-plt.ylabel("")
-plt.title("")
+plt.xlabel("I^(2/3)")
+plt.ylabel("V")
+plt.title("Voltage vs Current^(2/3) with breakdown values trimmed")
 plt.legend(loc = 'upper left')
+plt.grid(b = 'true')
 
 
 n = len( x )
