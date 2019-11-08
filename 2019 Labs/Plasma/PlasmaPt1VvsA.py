@@ -20,8 +20,8 @@ x_err = np.zeros(len(x1_err))
 for i in range(0, len(x1_err)):
     x_err[i] = (2.0/3.0) * (x1_err[i] / x1[i]) * x[i]
 plt.errorbar( x, y, xerr =  x_err, yerr = y_err, fmt = 'g.', label = 'Error')
-plt.xlim(0.009, 0.011)
-plt.ylim(0.5, 1.5)
+#plt.xlim(0.009, 0.011)
+#plt.ylim(0.5, 1.5)
 
 #p = np.polyfit( x, y, 1)
 #print(p)
